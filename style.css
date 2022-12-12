@@ -1,0 +1,441 @@
+body
+{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   width: 100vw;
+   height: 100vh;
+   
+   background-image: url(images/wallpaperflare.com_wallpaper\ \(2\).jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   overflow-x: hidden;
+   color: #232323;
+   font-family: "Avenir Next", "Avenir", sans-serif;
+}
+
+
+main
+{
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.changeProfil
+{
+   margin-top: 3vh;
+}
+.changeProfil button
+{
+   margin: 0;
+}
+h2, h1
+{
+   text-align: center;
+}
+
+.comm
+{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-top: 7vh;
+}
+.comm button
+{
+   margin: 3%;
+   padding: 1%;
+   width: 7vw;
+}
+
+.livreor
+{
+   padding: 1vh;
+   color: aliceblue;
+   max-width: 30vw;
+   overflow-wrap: break-word;
+   max-height: 90vh;
+}
+
+.centre .livreor{
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.border{
+   border-bottom: solid white;
+}
+
+.flou
+{
+   padding: 5%;
+   backdrop-filter: blur(6px);
+}
+
+
+
+
+
+/************* FORMS *************/
+
+.group { 
+   position:relative; 
+   margin-bottom:25px; 
+}
+input {
+   background-color: rgba(0, 0, 0, 0);
+   font-size:2.2vh;
+   padding: 7px 10px 10px 5px;
+   display:block;
+   width:300px;
+   border:none;
+   border-bottom:1.7px solid #000000;
+}
+input::placeholder{
+   color: #232323;
+   font-size:2.4vh;
+}
+input:focus{
+   outline:none;
+}
+
+/* LABEL ======================================= */
+label{
+   color:rgb(0, 0, 0); 
+   font-size:2.4vh;
+   font-weight:normal;
+   position:absolute;
+   pointer-events:none;
+   left:5px;
+   top:10px;
+   transition:0.2s ease all; 
+   -moz-transition:0.2s ease all; 
+   -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label{
+   top:-20px;
+   font-size:2vh;
+   color:#441a83;
+}
+
+/* BOTTOM BARS ================================= */
+.bar{
+   position:relative; display:block; width:42vh;
+}
+.bar:before, .bar:after{
+   content:'';
+   height:2px; 
+   width:0;
+   bottom:1px; 
+   position:absolute;
+   background:#441a83;
+   transition:0.2s ease all; 
+   -moz-transition:0.2s ease all; 
+   -webkit-transition:0.2s ease all;
+}
+.bar:before{
+   left:50%;
+}
+.bar:after {
+   right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+   width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+   position:absolute;
+   height:60%; 
+   width:100px; 
+   top:25%; 
+   left:0;
+   pointer-events:none;
+   opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+   -webkit-animation:inputHighlighter 0.3s ease;
+   -moz-animation:inputHighlighter 0.3s ease;
+   animation:inputHighlighter 0.3s ease;
+}
+
+/* animations*/
+@-webkit-keyframes inputHighlighter {
+  from { background:#441a83; }
+ to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#441a83; }
+ to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#441a83; }
+ to 	{ width:0; background:transparent; }
+}
+
+
+
+
+
+
+
+
+/*************************************************************
+ ******************* HEADER / NAV / FOOTER *******************
+ *************************************************************/
+
+
+#menuToggle
+{
+   display: block;
+   position: relative;
+   position: fixed;
+   top: 50px;
+   left: 50px;
+   
+   z-index: 1;
+   
+   -webkit-user-select: none;
+   user-select: none;
+}
+ 
+
+#menuToggle a
+{
+   text-decoration: none;
+   color: #cdcdcd;
+   
+   transition: color 0.3s ease;
+}
+ 
+#menuToggle a:hover
+{
+   color: goldenrod;
+}
+ 
+
+#menuToggle input
+{
+   display: block;
+   width: 40px;
+   height: 32px;
+   position: absolute;
+   top: -7px;
+   left: -5px;
+   
+   cursor: pointer;
+   
+   opacity: 0; /* hide this */
+   z-index: 2; /* and place it over the hamburger */
+   
+   -webkit-touch-callout: none;
+}
+ 
+ /*
+  * Just a quick hamburger
+  */
+#menuToggle span
+{
+   display: block;
+   width: 33px;
+   height: 4px;
+   margin-bottom: 5px;
+   position: relative;
+   
+   background: #cdcdcd;
+   border-radius: 3px;
+   
+   z-index: 1;
+   
+   transform-origin: 4px 0px;
+   
+   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+               background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+               opacity 0.55s ease;
+}
+ 
+#menuToggle span:first-child
+{
+   transform-origin: 0% 0%;
+}
+ 
+#menuToggle span:nth-last-child(2)
+{
+   transform-origin: 0% 100%;
+}
+ 
+ /* 
+  * Transform all the slices of hamburger
+  * into a crossmark.
+  */
+#menuToggle input:checked ~ span
+{
+   opacity: 1;
+   transform: rotate(45deg) translate(-2px, -1px);
+   background: #cdcdcd;
+}
+ 
+ /*
+  * But let's hide the middle one.
+  */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+   opacity: 0;
+   transform: rotate(0deg) scale(0.2, 0.2);
+}
+ 
+ /*
+  * Ohyeah and the last one should go the other direction
+  */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+   transform: rotate(-45deg) translate(0, -1px);
+}
+ 
+ /*
+  * Make this absolute positioned
+  * at the top left of the screen
+  */
+#menu
+{
+   position: absolute;
+   width: 13vw;
+   height: 100vh;
+   margin: -100px 0 0 -50px;
+   padding: 50px;
+   padding-top: 125px;
+   
+   background: #232323;
+   list-style-type: none;
+   -webkit-font-smoothing: antialiased;
+   /* to stop flickering of text in safari */
+   
+   transform-origin: 0% 0%;
+   transform: translate(-100%, 0);
+   
+   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+ 
+#menu li
+{
+   padding: 10px 0;
+   font-size: 22px;
+}
+ 
+ /*
+  * And let's slide it in from the left
+  */
+ #menuToggle input:checked ~ ul
+{
+   transform: none;
+}
+
+
+
+
+
+
+
+
+/*************************************
+************** BUTTONS ***************
+*************************************/
+
+.frame {
+   width: 90%;
+   margin: 1vh auto;
+   text-align: center;
+}
+button {
+   margin: 20px;
+   outline: none;
+}
+.custom-btn {
+   width: 130px;
+   height: 6vh;
+   padding: 10px 25px;
+   border: 2px solid #000;
+   font-family: 'Lato', sans-serif;
+   font-weight: 500;
+   background: transparent;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   position: relative;
+   display: inline-block;
+}
+ 
+/* 4 */
+.btn-4 {
+   position: relative;
+   color: #000;
+   z-index: 2;
+   line-height: 40px;
+   padding: 0;
+}
+.btn-4:hover{
+   border: none;
+}
+.btn-4:before,
+.btn-4:after {
+   position: absolute;
+   content: "";
+   width: 0%;
+   height: 0%;
+   border: 2px solid;
+   z-index: -1;
+   transition: all 0.3s ease;
+}
+.btn-4:before {
+   top: 0;
+   left: 0;
+   border-bottom-color: transparent;
+   border-right-color: transparent;
+   border-top-color: #000;
+   border-left-color: #000;
+}
+.btn-4:after{
+   bottom: 0;
+   right: 0;
+   border-top-color: transparent;
+   border-left-color: transparent;
+   border-bottom-color: #000;
+   border-right-color: #000;
+}
+.btn-4:hover:before,
+.btn-4:hover:after {
+   border-color: #000;
+   height: 100%;
+   width: 100%;
+}
+
+
+
+
+/**************************************
+*************** FOOTER ****************
+**************************************/
+
+footer{
+   background-color: black;
+   display: flex;
+   justify-content: space-around;
+   padding: 1.5vw 1vw 1.5vw 1vw;
+   margin-top: 1vh;
+}
+
+.github{
+   font-size: 1.4vw;
+   color: aliceblue;
+   text-decoration: none;
+}
