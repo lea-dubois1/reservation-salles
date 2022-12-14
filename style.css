@@ -50,21 +50,11 @@ h2, h1
    width: 7vw;
 }
 
-.livreor
-{
-   padding: 1vh;
-   color: aliceblue;
-   max-width: 30vw;
-   overflow-wrap: break-word;
-   max-height: 90vh;
-}
-
-.centre .livreor{
+form, .group{
    display: flex;
    flex-wrap: wrap;
    flex-direction: column;
    justify-content: center;
-   align-items: center;
 }
 
 .border{

@@ -85,6 +85,7 @@ if(isset($_POST['submit'])) {
     </head>
 
     <body>
+        <?php if(!$_SESSION){header('Location: connexion.php');} ?>
         <?php include 'header.php' ?>
 
         <main>
