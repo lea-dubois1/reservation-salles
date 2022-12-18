@@ -6,12 +6,11 @@ body
    width: 100vw;
    height: 100vh;
    
-   background-image: url(images/wallpaperflare.com_wallpaper\ \(2\).jpg);
+   background-image: url(images/img2.jpg);
    background-repeat: no-repeat;
    background-size: cover;
    background-attachment: fixed;
-   overflow-x: hidden;
-   color: #232323;
+   color: #ffffff;
    font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
@@ -23,6 +22,14 @@ main
    justify-content: center;
    align-items: center;
 }
+
+.centre
+{
+   padding: 1.4%;
+   backdrop-filter: blur(8px);
+   border-radius: 40px;
+}
+
 .changeProfil
 {
    margin-top: 3vh;
@@ -67,11 +74,27 @@ form, .group{
    backdrop-filter: blur(6px);
 }
 
+input
+{
+   color: #ffffff;
+}
+
+.reservation
+{
+   line-height: 2em;
+}
 
 
 
 
-/************* FORMS *************/
+
+
+
+
+
+/*********************************
+************* FORMS **************
+**********************************/
 
 .group { 
    position:relative; 
@@ -84,10 +107,10 @@ input {
    display:block;
    width:300px;
    border:none;
-   border-bottom:1.7px solid #000000;
+   border-bottom:1.7px solid #ffffff;
 }
 input::placeholder{
-   color: #232323;
+   color: #ffffff;
    font-size:2.4vh;
 }
 input:focus{
@@ -96,7 +119,7 @@ input:focus{
 
 /* LABEL ======================================= */
 label{
-   color:rgb(0, 0, 0); 
+   color:#ffffff; 
    font-size:2.4vh;
    font-weight:normal;
    position:absolute;
@@ -112,7 +135,7 @@ label{
 input:focus ~ label, input:valid ~ label{
    top:-20px;
    font-size:2vh;
-   color:#441a83;
+   color:#38beea;
 }
 
 /* BOTTOM BARS ================================= */
@@ -125,7 +148,7 @@ input:focus ~ label, input:valid ~ label{
    width:0;
    bottom:1px; 
    position:absolute;
-   background:#441a83;
+   background:#38beea;
    transition:0.2s ease all; 
    -moz-transition:0.2s ease all; 
    -webkit-transition:0.2s ease all;
@@ -162,15 +185,15 @@ input:focus ~ .highlight {
 
 /* animations*/
 @-webkit-keyframes inputHighlighter {
-  from { background:#441a83; }
+  from { background:#38beea; }
  to 	{ width:0; background:transparent; }
 }
 @-moz-keyframes inputHighlighter {
-  from { background:#441a83; }
+  from { background:#38beea; }
  to 	{ width:0; background:transparent; }
 }
 @keyframes inputHighlighter {
-  from { background:#441a83; }
+  from { background:#38beea; }
  to 	{ width:0; background:transparent; }
 }
 
@@ -211,7 +234,7 @@ input:focus ~ .highlight {
  
 #menuToggle a:hover
 {
-   color: goldenrod;
+   color: #38beea;
 }
  
 
@@ -355,7 +378,7 @@ button {
    width: 130px;
    height: 6vh;
    padding: 10px 25px;
-   border: 2px solid #000;
+   border: 2px solid rgb(255, 255, 255);
    font-family: 'Lato', sans-serif;
    font-weight: 500;
    background: transparent;
@@ -368,7 +391,7 @@ button {
 /* 4 */
 .btn-4 {
    position: relative;
-   color: #000;
+   color: rgb(255, 255, 255);
    z-index: 2;
    line-height: 40px;
    padding: 0;
@@ -391,20 +414,20 @@ button {
    left: 0;
    border-bottom-color: transparent;
    border-right-color: transparent;
-   border-top-color: #000;
-   border-left-color: #000;
+   border-top-color: rgb(255, 255, 255);
+   border-left-color: rgb(255, 255, 255);
 }
 .btn-4:after{
    bottom: 0;
    right: 0;
    border-top-color: transparent;
    border-left-color: transparent;
-   border-bottom-color: #000;
-   border-right-color: #000;
+   border-bottom-color: rgb(255, 255, 255);
+   border-right-color: rgb(255, 255, 255);
 }
 .btn-4:hover:before,
 .btn-4:hover:after {
-   border-color: #000;
+   border-color: rgb(255, 255, 255);
    height: 100%;
    width: 100%;
 }
@@ -412,20 +435,57 @@ button {
 
 
 
-/**************************************
-*************** FOOTER ****************
-**************************************/
 
-footer{
-   background-color: black;
-   display: flex;
-   justify-content: space-around;
-   padding: 1.5vw 1vw 1.5vw 1vw;
-   margin-top: 1vh;
+
+
+/*********************************
+************ TABLEAUX ************
+*********************************/
+
+tbody tr{
+   background-color:rgba(255, 255, 255, 0.7);
+   height: 6vh;
+}
+ 
+thead tr{
+   background-color:gray;
+   height: 10vh;
 }
 
-.github{
-   font-size: 1.4vw;
-   color: aliceblue;
+#green
+{
+   background-color: green;
+   height: 100%;
+   width: 100%;
+   margin: 0;
+   padding: 0.4vh;
+}
+
+#green:hover
+{
+   cursor: pointer;
+}
+
+table td
+{
+   table-layout: auto;
+   width: 13.3%;
+}
+
+table
+{
+   width: 85vw;
+   height: 75vh;
+   border-collapse : collapse;
+   color: black
+}
+
+table td, table th{
+   border: 1px solid rgb(0, 0, 0);
+}
+
+table a
+{
    text-decoration: none;
+   color: rgb(255, 255, 255);
 }

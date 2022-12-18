@@ -13,7 +13,7 @@
 
         <main>
 
-            <div>
+            <div class="centre">
 
                 <h1 class="welcome">HELLO AND WELCOME</h1>
                 <p>WE RENT MEETING ROOMS ALL OVER THE WORLD</p>

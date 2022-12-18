@@ -3,18 +3,20 @@
 require('conect_bdd.php');
 
 $error= "";
+$ok = "";
 
 
 if(isset($_POST['submit'])){
 
-    $titre = $_POST['titre'];
+    $titre = htmlspecialchars($_POST['titre'], ENT_QUOTES);
     $heure_debut = $_POST['heure_debut'];
     $heure_fin = $_POST['heure_fin'];
     $date = $_POST['date'];
     $debut = $date . ' ' . $heure_debut . ':00';
     $fin = $date . ' ' . $heure_fin . ':00';
-    $description = $_POST['description'];
+    $description = htmlspecialchars($_POST['description'], ENT_QUOTES);
     $id_user = $_SESSION['id'];
+    $weekday = date('l', strtotime($date));
 
 
     if($id_user != null && $titre != null && $heure_debut != null && $heure_fin != null && $date !=null && $description != null){
@@ -25,7 +27,7 @@ if(isset($_POST['submit'])){
 
                 if (strtotime($heure_debut) >= strtotime('08:00:00') && strtotime($heure_debut) <= strtotime('18:00:00') && strtotime($heure_fin) >= strtotime('09:00:00') && strtotime($heure_fin) <= strtotime('19:00:00')){
 
-                    if(strtotime('saturday') || strtotime('sunday')){
+                    if($weekday != ('Saturday') && $weekday != ('Sunday')){
 
                         //CHECK IF THE DATE IS FREE
                         // Set the request in a variable.
@@ -34,7 +36,6 @@ if(isset($_POST['submit'])){
                         // Check if the date is already present or not in our Database.
                         $result = mysqli_query($db, $sql);
                         $num = mysqli_num_rows($result);
-                        var_dump($num);
                         
                         
                         if($num <= 0) {     // If the date do not exist in the Database, we continue
@@ -58,6 +59,7 @@ if(isset($_POST['submit'])){
 
                                 $sql = "INSERT INTO `reservations`(`titre`, `description`, `debut`, `fin`, `id_utilisateur`) VALUES ('$titre','$description','$debut1','$fin1','$id_user')";
                                 $result = mysqli_query($db, $sql);
+								$ok = "You have sucessfully made your reservation";
                             }
 
                         }else{$error = "The date is already taken. Please choose another one";}
@@ -149,6 +151,8 @@ if(isset($_POST['submit'])){
                         // Display error messages (cf login.php) //
 
                         if($error) {echo '<strong>Error!</strong> '. $error;}
+						if($ok) {echo '<strong>Sucess!</strong> '. $ok;}
+
                     ?>
 
                 </form>

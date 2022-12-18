@@ -12,38 +12,85 @@
         <?php include 'header.php' ?>
 
         <main>
+
             <table>
+                
                 <thead>
-                <tr><th><?php echo date('08:00:00'). '-'. date('09:00:00'); ?></th>
-                        <td><?php 
-                            require 'config.php';
-                            $sql = "SELECT * FROM utilisateurs  INNER JOIN reservations WHERE utilisateurs.id = reservations.id_utilisateur ";
-                            $rs = mysqli_query($db,$sql);
-                            $result = mysqli_fetch_assoc($rs);
-                            if ($result['debut']= '2022-12-12 08:00:00'){
-                                echo $result['id'];
-                            }else{
-                                null;
-                            }
-                            ?></td>
-                    </tr>
-                    <tr><th><?php echo date('09:00:00'). '-'. date('10:00:00'); ?></th></tr>
-                    <tr><th><?php echo date('10:00:00'). '-'. date('11:00:00'); ?></th></tr>
-                    <tr><th><?php echo date('11:00:00'). '-'. date('12:00:00'); ?></th></tr>
-                    <tr><th><?php echo date('12:00:00'). '-'. date('13:00:00'); ?></th>
-                        <td><?php ?></td>
-                    </tr>
-                    <tr><th><?php echo date('13:00:00'). '-'. date('14:00:00'); ?></th></tr>
-                    <tr><th><?php echo date('14:00:00'). '-'. date('15:00:00'); ?></th></tr>
-                    <tr><th><?php echo date('15:00:00'). '-'. date('16:00:00'); ?></th></tr>
-                    <tr><th><?php echo date('16:00:00'). '-'. date('17:00:00'); ?></th></tr>
-                    <tr><th><?php echo date('17:00:00'). '-'. date('18:00:00'); ?></th></tr>
-                    <tr><th><?php echo date('18:00:00'). '-'. date('19:00:00'); ?></th></tr>
                     
+                    <tr>
+                        <th>Heure</th>
+
+                        <?php
+
+                            $monday = strtotime('monday this week');
+
+                            foreach (range(0, 6) as $day) {
+
+                                echo '<th>'. date("l Y-m-d", (($day * 86400) + $monday)) .'</th>';
+
+                            }
+
+                        ?>
+                        
+                    </tr>
+
+                </thead>
+                
+                <tbody>
+
+                <?php
+                
+                    $heure_depart= 8;
+                    $heure_fin=18;
+
+                        for ($h=$heure_depart;$h<=$heure_fin;$h++) {
+
+                            echo '<tr>';
+                            $hour= $h . ':00';
+                            echo '<th>' .$hour.'</th>';
+                                
+                            if ($h== 8 || $h== 9){
+
+                                $hour = '0'.$hour;
+
+                            }
+
+                            for($a = 0; $a<= 6; $a++){
+
+                                $sql = "SELECT * FROM utilisateurs INNER JOIN reservations WHERE utilisateurs.id = reservations.id_utilisateur ";
+                                $rs = mysqli_query($db,$sql);
+                                $result = mysqli_fetch_all($rs);
+
+                                $res = date("Y-m-d", (($a * 86400) + $monday)) .' '. $hour.':00';
+                                $weekend = date('l', strtotime($res));
+
+                                if($weekend == ('Saturday') || $weekend == ('Sunday')){
+
+                                    echo '<td bgcolor="red"></td>';
+
+                                }else{
+                                    echo '<td bgcolor="white">';
+
+                                    foreach($result as $key => $value){
+                                        
+                                        if ($result[$key][6] == $res){
+
+                                            echo '<div id="green"><a href="reservation.php?id=' . $result[$key][3] . '">' . $result[$key][4] . '</a></div>';
+                                        }
+
+                                    }
+
+                                    echo '</td>';
+                                }
+
+                            }
+
+                            echo '</tr>';
+                        } 
+                    ?>
+
                 </tbody>
             </table>
         </main>
-
-        <?php include 'footer.php' ?>
     </body>
 </html>
