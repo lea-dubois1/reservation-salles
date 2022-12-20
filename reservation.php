@@ -8,6 +8,7 @@
     </head>
 
     <body>
+        
         <?php require 'conect_bdd.php' ?>
         <?php include 'header.php' ?>
 
@@ -46,5 +47,6 @@
         </main>
 
         <?php include 'footer.php' ?>
+
     </body>
 </html>
